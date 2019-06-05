@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Button, TouchableHighlight, TouchableOpacity,
+  StyleSheet, Text, View, Button, TouchableOpacity,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     margin: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   buttonArea: {
     // width: '50%',
@@ -31,41 +31,44 @@ class App extends React.Component {
   }
 
   handleOnPress = (operation) => (e) => {
+    const { counterValue } = this.state;
     this.setState({
-      counterValue: operation === '+' ? this.state.counterValue + 1 : this.state.counterValue - 1,
+      counterValue: operation === '+' ? counterValue + 1 : counterValue - 1,
     });
   };
 
   render() {
+    const { playerName } = this.props;
+    const { counterValue } = this.state;
     return (
-        <View style={styles.container}>
-          <Text>
-            Player {this.props.player}
-          </Text>
-          <Text
-            style={{ fontSize: 80 }}>
-            {this.state.counterValue}
-          </Text>
-          <View styles={styles.buttonArea}>
-            <Button title='+' onPress={this.handleOnPress('+')}>
-            </Button>
-            {/* <TouchableOpacity
-              onPress={this.handleOnPress('+')}>
-              <Text>
-                +
-              </Text>
-            </TouchableOpacity> */}
-          </View>
-          <View styles={styles.buttonArea}>
-            <Text>-</Text>
-            {/* <TouchableHighlight
-              onPress={this.handleOnPress('-')}>
-                <Text styles={{ fontSize: 80 }}>
-                  -
-                </Text>
-            </TouchableHighlight> */}
-          </View>
+      <View style={styles.container}>
+        <Text>
+          {`Player ${playerName}`}
+        </Text>
+        <Text
+          style={{ fontSize: 80 }}
+        >
+          {counterValue}
+        </Text>
+        <View styles={styles.buttonArea}>
+          <Button title='+' onPress={this.handleOnPress('+')} />
+          {/* <TouchableOpacity
+            onPress={this.handleOnPress('+')}>
+            <Text>
+              +
+            </Text>
+          </TouchableOpacity> */}
         </View>
+        <View styles={styles.buttonArea}>
+          <Text>-</Text>
+          {/* <TouchableHighlight
+            onPress={this.handleOnPress('-')}>
+              <Text styles={{ fontSize: 80 }}>
+                -
+              </Text>
+          </TouchableHighlight> */}
+        </View>
+      </View>
     );
   }
 }

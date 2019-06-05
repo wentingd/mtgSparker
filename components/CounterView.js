@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import Counter from './Counter';
+import ToolBox from './ToolBox';
 import Utils from './Utils';
+
 const styles = {
   container: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
-    backgroundColor:'grey',
+    backgroundColor: 'grey',
   },
-  row: {
+  lowerRow: {
     flex: 1,
-    flexDirection:'row',
-    justifyContent:'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'stretch',
-    alignSelf:'center',
+    alignSelf: 'center',
     borderColor: 'black',
   },
   upperRow: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'stretch',
-    alignSelf:'center',
-    borderColor: 'black',
-    transform: [{ rotate: '180deg'}],
+    alignSelf: 'center',
+    transform: [{ rotate: '180deg' }],
   },
   playerArea: {
     flex: 1,
@@ -34,58 +35,47 @@ const styles = {
     borderWidth: 3,
     borderColor: 'white',
   },
-  toolBox: {
-    justifyContent:'center',
-    alignItems:'center',
-    alignSelf:'center',
-    position:'absolute',
+  toolBoxArea: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    position: 'absolute',
   },
-}
+};
 
-class CounterView extends Component {
-  constructor(props) {
-    super(props);
-  }
+const renderPlayerArea = (player) => (
+  <View
+    key={player.index}
+    style={{ ...styles.playerArea, backgroundColor: player.color }}
+  >
+    <Counter
+      playerName={player.index + 1}
+    />
+  </View>
+);
 
+class CounterView extends React.Component {
   render() {
     const players = Utils.generatePlayers(this.props.playerNumber);
     const playersPerRow = this.props.playerNumber / 2;
     return (
-    <View style={styles.container}>
-      <View style={styles.upperRow}>
-        {
-          players.slice(0, playersPerRow).map((player) => 
-            <View
-              key={player.index}
-              style={{...styles.playerArea, backgroundColor: player.color}}>
-              <Counter/>
-            </View>
-          )
-        }
+      <View style={styles.container}>
+        <View style={styles.upperRow}>
+          {
+            players.slice(playersPerRow, this.props.playerNumber).map((player) => renderPlayerArea(player))
+          }
+        </View>
+        <View style={styles.lowerRow}>
+          {
+            players.slice(0, playersPerRow).map((player) => renderPlayerArea(player))
+          }
+        </View>
+        <View style={styles.toolBoxArea}>
+          <ToolBox />
+        </View>
       </View>
-      <View style={styles.row}>
-      {
-          players.slice(playersPerRow, this.props.playerNumber).map((player) => 
-            <View
-              key={player.index}
-              style={{...styles.playerArea, backgroundColor: player.color}}>
-              <Counter/>
-            </View>
-          )
-        }
-      </View>
-      <View style={styles.toolBox}>
-        <View style={{
-          backgroundColor:'blue',
-          borderRadius:10,
-          height:100,
-          width:100,
-          borderRadius:100/2 
-        }}/>
-      </View>
-    </View>
-    )
+    );
   }
-};
+}
 
 export default CounterView;

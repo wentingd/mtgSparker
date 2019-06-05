@@ -11,11 +11,14 @@
   "rules": {
     "no-use-before-define": "off",
     "react/jsx-filename-extension": "off",
+    "react/prefer-stateless-function": "off",
+    "react/destructuring-assignment": "off",
     "react/prop-types": "off",
     "arrow-body-style": "off",
     "arrow-parens": ["error", "always"],
+    "jsx-quotes": ["error", "prefer-single"],
     "max-len": "off",
-    "no-shadow": ["error", {
+    "no-shadow": ["warn", {
       "builtinGlobals": true
     }],
     "no-underscore-dangle": "off",
