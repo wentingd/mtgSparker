@@ -1,11 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, View,
+} from 'react-native';
+import CounterView from './components/CounterView';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playerNumber: 4,
+    };
+  }
+
   render() {
+    const { playerNumber } = this.state;
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <CounterView
+          playerNumber={playerNumber}
+        />
       </View>
     );
   }
