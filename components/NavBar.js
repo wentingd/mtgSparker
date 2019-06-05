@@ -1,4 +1,5 @@
-import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation'
+import React from 'react';
+import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation';
 import {
   View, Icon,
 } from 'react-native';

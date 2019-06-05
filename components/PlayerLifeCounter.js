@@ -1,7 +1,9 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, TouchableOpacity, TouchableHighlight,
+  StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
+import CommanderDamageZone from './CommanderDamageZone';
+import Utils from './Utils';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,47 +14,64 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   infoArea: {
+    flex: 1,
     position: 'absolute',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     alignSelf: 'center',
+    marginTop: -20,
+    zIndex: 1,
+  },
+  commanderDamageArea: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
     zIndex: 1,
   },
   touchableArea: {
-    opacity: 0,
     flex: 1,
+    opacity: 0,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
   },
+  countFont: {
+    fontSize: Utils.normalizeSize(120),
+    fontFamily: 'sans-serif-thin',
+  },
 });
 
-class App extends React.Component {
+class PlayerZone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counterValue: this.props.startingValue || 20,
+      count: this.props.startLife || 20,
     };
   }
 
   handleOnPress = (operation) => () => {
-    const { counterValue } = this.state;
+    const { count } = this.state;
     this.setState({
-      counterValue: operation === '+' ? counterValue + 1 : counterValue - 1,
+      count: operation === '+' ? count + 1 : count - 1,
     });
   };
 
   render() {
-    const { counterValue } = this.state;
+    const { count } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.infoArea}>
           <Text
-            style={{ fontSize: 100 }}
+            style={styles.countFont}
           >
-            {counterValue}
+            {count}
           </Text>
+        </View>
+        <View style={styles.commanderDamageArea}>
+          <CommanderDamageZone
+            opponents={this.props.opponents}
+          />
         </View>
         <TouchableOpacity
           activeOpacity={0.5}
@@ -77,4 +96,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default PlayerZone;

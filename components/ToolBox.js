@@ -3,11 +3,11 @@ import { View } from 'react-native';
 
 const styles = {
   icon: {
-    backgroundColor: 'lightcoral',
-    height: 80,
-    width: 80,
-    borderRadius: 40,
-    borderColor: 'darkred',
+    backgroundColor: 'darkred',
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    borderColor: 'white',
     borderWidth: 5,
   },
 };
