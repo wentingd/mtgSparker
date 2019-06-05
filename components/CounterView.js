@@ -18,7 +18,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'center',
-    borderColor: 'black',
   },
   upperRow: {
     flex: 1,
@@ -26,7 +25,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'center',
-    transform: [{ rotate: '180deg' }],
+    // transform: [{ rotate: '180deg' }],
   },
   playerArea: {
     flex: 1,

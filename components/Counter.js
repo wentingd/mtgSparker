@@ -1,24 +1,30 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Button, TouchableOpacity,
+  StyleSheet, Text, View, TouchableOpacity, TouchableHighlight,
 } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
     flexDirection: 'column',
-  },
-  buttonArea: {
-    // width: '50%',
-    // height: '90%',
-    flex: 1,
+    margin: 5,
     alignItems: 'stretch',
     justifyContent: 'center',
+  },
+  infoArea: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    zIndex: 1,
+  },
+  touchableArea: {
+    opacity: 0,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'white',
-    alignSelf: 'stretch',
   },
 });
 
@@ -30,7 +36,7 @@ class App extends React.Component {
     };
   }
 
-  handleOnPress = (operation) => (e) => {
+  handleOnPress = (operation) => () => {
     const { counterValue } = this.state;
     this.setState({
       counterValue: operation === '+' ? counterValue + 1 : counterValue - 1,
@@ -38,36 +44,34 @@ class App extends React.Component {
   };
 
   render() {
-    const { playerName } = this.props;
     const { counterValue } = this.state;
     return (
       <View style={styles.container}>
-        <Text>
-          {`Player ${playerName}`}
-        </Text>
-        <Text
-          style={{ fontSize: 80 }}
+        <View style={styles.infoArea}>
+          <Text
+            style={{ fontSize: 100 }}
+          >
+            {counterValue}
+          </Text>
+        </View>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.touchableArea}
+          onPress={this.handleOnPress('+')}
         >
-          {counterValue}
-        </Text>
-        <View styles={styles.buttonArea}>
-          <Button title='+' onPress={this.handleOnPress('+')} />
-          {/* <TouchableOpacity
-            onPress={this.handleOnPress('+')}>
-            <Text>
-              +
-            </Text>
-          </TouchableOpacity> */}
-        </View>
-        <View styles={styles.buttonArea}>
-          <Text>-</Text>
-          {/* <TouchableHighlight
-            onPress={this.handleOnPress('-')}>
-              <Text styles={{ fontSize: 80 }}>
-                -
-              </Text>
-          </TouchableHighlight> */}
-        </View>
+          <Text style={{ fontSize: 50 }}>
+            +
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.touchableArea}
+          onPress={this.handleOnPress('-')}
+        >
+          <Text style={{ fontSize: 50 }}>
+            -
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
