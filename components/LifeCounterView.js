@@ -26,7 +26,7 @@ const styles = {
     alignItems: 'stretch',
     alignSelf: 'center',
     // TODO: using transform disturbs life counter display. see react-native/issues/19637
-    // transform: [{ rotate: '-180deg' }],
+    transform: [{ rotate: '-180deg' }],
   },
   playerArea: {
     flex: 1,
@@ -43,7 +43,7 @@ const styles = {
   },
 };
 
-const renderPlayerArea = (player, opponents) => (
+const renderPlayerArea = (player, opponents, commanderMode) => (
   <View
     key={player.index}
     style={{ ...styles.playerArea, backgroundColor: player.color }}
@@ -51,15 +51,16 @@ const renderPlayerArea = (player, opponents) => (
     <PlayerLifeCounter
       playerName={player.index + 1}
       opponents={opponents}
+      commanderMode={commanderMode}
     />
   </View>
 );
 
 class CounterView extends React.Component {
   render() {
-    const { commanderMode } = this.props;
-    const players = Utils.generatePlayers(this.props.playerNumber);
-    const playersPerRow = this.props.playerNumber / 2;
+    const { commanderMode, playerNumber } = this.props;
+    const players = Utils.generatePlayers(playerNumber);
+    const playersPerRow = playerNumber / 2;
     return (
       <View style={styles.container}>
         <View style={styles.upperRow}>

@@ -6,12 +6,10 @@ import MiniCounter from './MiniCounter';
 
 const styles = StyleSheet.create({
   container: {
-    width: '40%',
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'transparent',
-    borderRadius: 10,
   },
 });
 
@@ -30,6 +28,7 @@ class CommanderDamageZone extends React.Component {
           this.props.opponents.map((opponent) => (
             <MiniCounter
               key={opponent.index}
+              playerName={opponent.index + 1}
               color={opponent.color}
             />
           ))

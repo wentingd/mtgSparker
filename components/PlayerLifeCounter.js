@@ -20,9 +20,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginTop: -20,
-    zIndex: 1,
+    zIndex: 0.5,
   },
   commanderDamageArea: {
+    width: '60%',
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
+    zIndex: 0.1,
   },
   countFont: {
     fontSize: Utils.normalizeSize(120),
@@ -46,7 +48,7 @@ class PlayerZone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: this.props.startLife || 20,
+      count: this.props.commanderMode ? 40 : (this.props.startingLife || 20),
     };
   }
 
@@ -62,17 +64,24 @@ class PlayerZone extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.infoArea}>
-          <Text
-            style={styles.countFont}
-          >
+          <Text>
+            {`Player ${this.props.playerName}`}
+          </Text>
+          <Text style={styles.countFont}>
             {count}
           </Text>
         </View>
-        <View style={styles.commanderDamageArea}>
-          <CommanderDamageZone
-            opponents={this.props.opponents}
-          />
-        </View>
+        {
+          this.props.commanderMode
+            ? (
+              <View style={styles.commanderDamageArea}>
+                <CommanderDamageZone
+                  opponents={this.props.opponents}
+                />
+              </View>
+            )
+            : null
+        }
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.touchableArea}
