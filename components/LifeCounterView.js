@@ -26,7 +26,7 @@ const styles = {
     alignItems: 'stretch',
     alignSelf: 'center',
     // TODO: using transform disturbs life counter display. see react-native/issues/19637
-    transform: [{ rotate: '-180deg' }],
+    // transform: [{ rotate: '-180deg' }],
   },
   playerArea: {
     flex: 1,

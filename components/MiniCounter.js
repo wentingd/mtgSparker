@@ -23,7 +23,7 @@ const styles = {
     fontSize: 50,
     fontFamily: 'sans-serif-light',
   },
-  modalContainer: {
+  modalBackLayer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -33,11 +33,18 @@ const styles = {
   modalBody: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '40%',
+    width: '50%',
     height: '40%',
     borderRadius: 25,
     borderWidth: 3,
     borderColor: 'white',
+  },
+  modalContents: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
+    width: '80%',
+    height: '80%',
   },
 };
 
@@ -75,23 +82,34 @@ class MiniCounter extends React.Component {
         </Text>
         <Modal
           transparent
+          animationType='fade'
           visible={modalVisible}
           onRequestClose={this.onModalClose}
         >
-          <View style={styles.modalContainer}>
-            <View style={{ ...styles.modalBody, backgroundColor: color }}>
-              <Text>{`Damage by Player ${playerName}`}</Text>
-              <Button
-                title='+'
-                onPress={this.handleCountOnPress('+')}
-              />
-              <Text style={styles.modalCountFont}>{count}</Text>
-              <Button
-                title='-'
-                onPress={this.handleCountOnPress('-')}
-              />
+          <TouchableOpacity
+            style={styles.modalBackLayer}
+            activeOpacity={1}
+            onPressOut={this.setModalVisible(false)}
+          >
+            <View
+              style={{ ...styles.modalBody, backgroundColor: color }}
+            >
+              <View style={styles.modalContents}>
+                <Button
+                  title='+'
+                  color='black'
+                  onPress={this.handleCountOnPress('+')}
+                />
+                <Text>{`Damage by Player ${playerName}`}</Text>
+                <Text style={styles.modalCountFont}>{count}</Text>
+                <Button
+                  title='-'
+                  color='black'
+                  onPress={this.handleCountOnPress('-')}
+                />
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </Modal>
       </TouchableOpacity>
     );

@@ -20,14 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginTop: -20,
-    zIndex: 0.5,
-  },
-  commanderDamageArea: {
-    width: '60%',
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    zIndex: 1,
+    zIndex: 0,
   },
   touchableArea: {
     flex: 1,
@@ -36,7 +29,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    zIndex: 0.1,
+    zIndex: 1,
+  },
+  commanderDamageArea: {
+    width: '60%',
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    zIndex: 2,
+  },
+  touchableAreaFont: {
+    fontSize: Utils.normalizeSize(80),
   },
   countFont: {
     fontSize: Utils.normalizeSize(120),
@@ -87,18 +90,14 @@ class PlayerZone extends React.Component {
           style={styles.touchableArea}
           onPress={this.handleOnPress('+')}
         >
-          <Text style={{ fontSize: 50 }}>
-            +
-          </Text>
+          <Text style={styles.touchableAreaFont}>+</Text>
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('-')}
         >
-          <Text style={{ fontSize: 50 }}>
-            -
-          </Text>
+          <Text style={styles.touchableAreaFont}>-</Text>
         </TouchableOpacity>
       </View>
     );
