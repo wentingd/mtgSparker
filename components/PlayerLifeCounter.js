@@ -3,7 +3,7 @@ import {
   StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
 import CommanderDamageZone from './CommanderDamageZone';
-import Utils from './Utils';
+import { normalizeSize } from './Utils';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   touchableAreaFont: {
-    fontSize: Utils.normalizeSize(80),
+    fontSize: normalizeSize(80),
   },
   countFont: {
-    fontSize: Utils.normalizeSize(120),
+    fontSize: normalizeSize(120),
     fontFamily: 'sans-serif-thin',
   },
 });

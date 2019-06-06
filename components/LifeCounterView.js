@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PlayerLifeCounter from './PlayerLifeCounter';
 import ToolBox from './ToolBox';
-import Utils from './Utils';
+import { generatePlayers, omitByIndex } from './Utils';
 
 const styles = {
   container: {
@@ -59,21 +59,21 @@ const renderPlayerArea = (player, opponents, commanderMode) => (
 class CounterView extends React.Component {
   render() {
     const { commanderMode, playerNumber } = this.props;
-    const players = Utils.generatePlayers(playerNumber);
+    const players = generatePlayers(playerNumber);
     const playersPerRow = playerNumber / 2;
     return (
       <View style={styles.container}>
         <View style={styles.upperRow}>
           {
             players.slice(playersPerRow, this.props.playerNumber).map(
-              (player) => renderPlayerArea(player, Utils.omitByIndex(player, players), commanderMode),
+              (player) => renderPlayerArea(player, omitByIndex(player, players), commanderMode),
             )
           }
         </View>
         <View style={styles.lowerRow}>
           {
             players.slice(0, playersPerRow).map(
-              (player) => renderPlayerArea(player, Utils.omitByIndex(player, players), commanderMode),
+              (player) => renderPlayerArea(player, omitByIndex(player, players), commanderMode),
             )
           }
         </View>

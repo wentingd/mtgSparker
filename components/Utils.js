@@ -43,7 +43,7 @@ function normalizeSize(size) {
   return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
 }
 
-export default {
+export {
   getRandomArbitrary,
   getRandomNumber,
   generatePlayers,

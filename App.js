@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View,
+  StatusBar, StyleSheet, View,
 } from 'react-native';
 import LifeCounterView from './components/LifeCounterView';
 
@@ -16,7 +16,8 @@ export default class App extends React.Component {
   render() {
     const { playerNumber, commanderMode } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={styles.screen}>
+        <StatusBar hidden />
         <LifeCounterView
           playerNumber={playerNumber}
           commanderMode={commanderMode}
@@ -27,7 +28,7 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
