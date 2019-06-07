@@ -12,11 +12,7 @@ const colors = [
 ];
 
 function getRandomNumber(min, max) {
-  Math.floor(min + (max - min) * Math.random());
-}
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * max + min);
 }
 
 function generatePlayers(playerNumber) {
@@ -43,10 +39,14 @@ function normalizeSize(size) {
   return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
 }
 
+function isEven(n) {
+  return n % 2 === 0;
+}
+
 export {
-  getRandomArbitrary,
   getRandomNumber,
   generatePlayers,
   normalizeSize,
   omitByIndex,
+  isEven,
 };

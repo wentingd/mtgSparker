@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PlayerLifeCounter from './PlayerLifeCounter';
 import ToolBox from './ToolBox';
-import { generatePlayers, omitByIndex } from './Utils';
+import { omitByIndex } from './Utils';
 
 const styles = {
   container: {
@@ -10,7 +10,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
-    backgroundColor: 'grey',
+    backgroundColor: 'transparent',
   },
   lowerRow: {
     flex: 1,
@@ -58,8 +58,7 @@ const renderPlayerArea = (player, opponents, commanderMode) => (
 
 class CounterView extends React.Component {
   render() {
-    const { commanderMode, playerNumber } = this.props;
-    const players = generatePlayers(playerNumber);
+    const { commanderMode, playerNumber, players } = this.props;
     const playersPerRow = playerNumber / 2;
     return (
       <View style={styles.container}>
