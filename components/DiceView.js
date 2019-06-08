@@ -71,6 +71,9 @@ class DiceView extends React.Component {
         duration: 1500,
         easing: Easing.out(Easing.exp),
       }).start(),
+      {
+        useNativeDriver: true,
+      },
     ]);
   }
 
@@ -110,7 +113,7 @@ class DiceView extends React.Component {
                       animatedStyle]}
                   >
                     <Dice
-                      face={diceFaces[i]}
+                      faceCount={diceFaces[i]}
                       color={dice.color}
                     />
                   </Animated.View>
