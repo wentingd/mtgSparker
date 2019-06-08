@@ -12,8 +12,12 @@ export default class App extends React.Component {
     this.state = {
       playerNumber: 2,
       commanderMode: true,
-      showDice: true,
+      diceView: true,
     };
+  }
+
+  setDiceViewVisible = (visible) => () => {
+    this.setState({ diceView: visible });
   }
 
   render() {
@@ -26,10 +30,16 @@ export default class App extends React.Component {
           players={players}
           playerNumber={playerNumber}
           commanderMode={commanderMode}
+          setDiceViewVisible={this.setDiceViewVisible}
         />
         {
-          this.state.showDice
-            ? <DiceView players={players} />
+          this.state.diceView
+            ? (
+              <DiceView
+                players={players}
+                setDiceViewVisible={this.setDiceViewVisible}
+              />
+            )
             : null
         }
       </View>

@@ -58,7 +58,9 @@ const renderPlayerArea = (player, opponents, commanderMode) => (
 
 class CounterView extends React.Component {
   render() {
-    const { commanderMode, playerNumber, players } = this.props;
+    const {
+      commanderMode, playerNumber, players, setDiceViewVisible,
+    } = this.props;
     const playersPerRow = playerNumber / 2;
     return (
       <View style={styles.container}>
@@ -77,7 +79,10 @@ class CounterView extends React.Component {
           }
         </View>
         <View style={styles.toolBoxArea}>
-          <ToolBox />
+          <ToolBox
+            setDiceViewVisible={setDiceViewVisible}
+            players={players}
+          />
         </View>
       </View>
     );

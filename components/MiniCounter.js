@@ -58,10 +58,6 @@ class MiniCounter extends React.Component {
     this.setState({ modalVisible: visible });
   };
 
-  onModalClose = () => {
-    this.setState({ modalVisible: false });
-  }
-
   handleCountOnPress = (operation) => () => {
     const { count } = this.state;
     this.setState({
@@ -84,7 +80,7 @@ class MiniCounter extends React.Component {
           transparent
           animationType='fade'
           visible={modalVisible}
-          onRequestClose={this.onModalClose}
+          onRequestClose={this.setModalVisible(false)}
         >
           <TouchableOpacity
             style={styles.modalBackLayer}

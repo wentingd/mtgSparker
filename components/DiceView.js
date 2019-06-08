@@ -1,21 +1,29 @@
 import React from 'react';
 import {
-  Animated, Button, View, Easing, StyleSheet,
+  Animated, Button, View, Easing, StyleSheet, TouchableWithoutFeedback, TouchableHighlight,
 } from 'react-native';
 import Dice from './Dice';
 import { getRandomNumber, isEven } from './Utils';
 
 const styles = StyleSheet.create({
+  screen: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  },
   backLayer: {
     width: '100%',
     height: '100%',
-    flexDirection: 'column-reverse',
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
-  container: {
+  contentsContainer: {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column-reverse',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  diceContainer: {
     height: '50%',
     flexDirection: 'row-reverse',
     flexWrap: 'wrap',
@@ -78,24 +86,33 @@ class DiceView extends React.Component {
     });
     const animatedStyle = { transform: [{ rotate: spin }] };
     return (
-      <View style={styles.backLayer}>
-        <Button title='roll' onPress={this.rollDices} />
-        <View style={{ ...styles.container, width: `${100 - (2 - this.dices.length / 2) * 10}%` }}>
-          {
-            this.dices.map((dice, i) => (
-              <Animated.View
-                key={dice.index + 1}
-                style={[styles.dice, positionValues[i].getLayout(), animatedStyle]}
-              >
-                <Dice
-                  face={diceFaces[i]}
-                  color={dice.color}
-                />
-              </Animated.View>
-            ))
-          }
-        </View>
-        <Button title='reset' onPress={this.resetDices} />
+      <View style={styles.screen}>
+        <TouchableHighlight
+          onPress={this.props.setDiceViewVisible(false)}
+          style={styles.backLayer}
+        >
+          <View style={styles.contentsContainer}>
+            <Button title='roll' onPress={this.rollDices} />
+            <View
+              style={{ ...styles.diceContainer, width: `${100 - (2 - this.dices.length / 2) * 10}%` }}
+            >
+              {
+                this.dices.map((dice, i) => (
+                  <Animated.View
+                    key={dice.index + 1}
+                    style={[styles.dice, positionValues[i].getLayout(), animatedStyle]}
+                  >
+                    <Dice
+                      face={diceFaces[i]}
+                      color={dice.color}
+                    />
+                  </Animated.View>
+                ))
+              }
+            </View>
+            <Button title='reset' onPress={this.resetDices} />
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
