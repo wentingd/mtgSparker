@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Animated, Button, View, Easing, StyleSheet, TouchableWithoutFeedback, TouchableHighlight,
+  Animated, View, Easing, StyleSheet, TouchableHighlight,
 } from 'react-native';
 import Dice from './Dice';
 import { getRandomNumber, isEven } from './Utils';
@@ -19,20 +19,20 @@ const styles = StyleSheet.create({
   contentsContainer: {
     width: '100%',
     height: '100%',
-    flexDirection: 'column-reverse',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
   diceContainer: {
     height: '50%',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignContent: 'space-around',
     backgroundColor: 'transparent',
   },
   dice: {
-    margin: 50,
+    margin: '10%',
   },
 });
 
@@ -50,6 +50,10 @@ class DiceView extends React.Component {
       positionValues: this.dices.map((dice) => new Animated.ValueXY(dice.initialPosition)),
       diceFaces: this.dices.map(() => getRandomNumber(1, 6)),
     };
+  }
+
+  componentDidMount() {
+    this.rollDices();
   }
 
   rollDices = () => {
@@ -80,6 +84,7 @@ class DiceView extends React.Component {
 
   render() {
     const { spinValue, positionValues, diceFaces } = this.state;
+    const { setDiceViewVisible } = this.props;
     const spin = spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '-360deg'],
@@ -88,11 +93,10 @@ class DiceView extends React.Component {
     return (
       <View style={styles.screen}>
         <TouchableHighlight
-          onPress={this.props.setDiceViewVisible(false)}
+          onPress={setDiceViewVisible(false)}
           style={styles.backLayer}
         >
           <View style={styles.contentsContainer}>
-            <Button title='roll' onPress={this.rollDices} />
             <View
               style={{ ...styles.diceContainer, width: `${100 - (2 - this.dices.length / 2) * 10}%` }}
             >
@@ -100,7 +104,10 @@ class DiceView extends React.Component {
                 this.dices.map((dice, i) => (
                   <Animated.View
                     key={dice.index + 1}
-                    style={[styles.dice, positionValues[i].getLayout(), animatedStyle]}
+                    style={[
+                      { ...styles.dice, margin: `${70 - (this.dices.length / 2) * 30}%` },
+                      positionValues[i].getLayout(),
+                      animatedStyle]}
                   >
                     <Dice
                       face={diceFaces[i]}
@@ -110,7 +117,7 @@ class DiceView extends React.Component {
                 ))
               }
             </View>
-            <Button title='reset' onPress={this.resetDices} />
+            {/* <Button title='reset' onPress={this.resetDices} /> */}
           </View>
         </TouchableHighlight>
       </View>

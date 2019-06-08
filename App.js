@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       playerNumber: 2,
       commanderMode: true,
-      diceView: true,
+      diceView: false,
     };
   }
 
