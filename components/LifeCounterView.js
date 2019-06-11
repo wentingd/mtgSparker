@@ -57,10 +57,6 @@ const renderPlayerArea = (player, opponents, commanderMode) => (
 );
 
 class CounterView extends React.Component {
-  resetCurrentGame = () => {
-    
-  };
-
   render() {
     const {
       commanderMode, playerNumber, players, setDiceViewVisible, setGameConfig,
@@ -86,8 +82,9 @@ class CounterView extends React.Component {
           <ToolBox
             setDiceViewVisible={setDiceViewVisible}
             setGameConfig={setGameConfig}
-            resetCurrentGame={this.resetCurrentGame}
             players={players}
+            playerNumber={playerNumber}
+            commanderMode={commanderMode}
           />
         </View>
       </View>

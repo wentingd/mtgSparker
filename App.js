@@ -2,19 +2,23 @@ import React from 'react';
 import {
   StatusBar, StyleSheet, View,
 } from 'react-native';
-import { faFire } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFire, faDice, faCogs, faRedo, faUsers, faUserFriends,
+} from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import LifeCounterView from './components/LifeCounterView';
 import DiceView from './components/DiceView';
 import { generatePlayers } from './components/Utils';
 
-library.add(faFire);
+library.add(
+  faFire, faDice, faCogs, faRedo, faUsers, faUserFriends,
+);
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerNumber: 2,
+      playerNumber: 4,
       commanderMode: true,
       diceView: false,
     };

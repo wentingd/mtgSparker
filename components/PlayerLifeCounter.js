@@ -52,18 +52,28 @@ class PlayerZone extends React.Component {
     super(props);
     this.state = {
       count: this.props.commanderMode ? 40 : (this.props.startingLife || 20),
+      refresh: false,
     };
+  }
+
+  componentWillReceiveProps({ commanderMode, startingLife }) {
+    this.setState({
+      count: commanderMode ? 40 : (startingLife || 20),
+      refresh: true,
+    });
   }
 
   handleOnPress = (operation) => () => {
     const { count } = this.state;
     this.setState({
       count: operation === '+' ? count + 1 : count - 1,
+      refresh: false,
     });
   };
 
   render() {
-    const { count } = this.state;
+    const { count, refresh } = this.state;
+    const { opponents } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.infoArea}>
@@ -79,7 +89,8 @@ class PlayerZone extends React.Component {
             ? (
               <View style={styles.commanderDamageArea}>
                 <CommanderDamageZone
-                  opponents={this.props.opponents}
+                  opponents={opponents}
+                  refresh={refresh}
                 />
               </View>
             )

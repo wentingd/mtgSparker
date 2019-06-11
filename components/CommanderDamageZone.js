@@ -14,22 +14,17 @@ const styles = StyleSheet.create({
 });
 
 class CommanderDamageZone extends React.Component {
-  handleOnPress = (operation) => () => {
-    const { lifeCount } = this.state;
-    this.setState({
-      lifeCount: operation === '+' ? lifeCount + 1 : lifeCount - 1,
-    });
-  };
-
   render() {
+    const { opponents, refresh } = this.props;
     return (
       <View style={styles.container}>
         {
-          this.props.opponents.map((opponent) => (
+          opponents.map((opponent) => (
             <MiniCounter
               key={opponent.index}
               playerName={opponent.index + 1}
               color={opponent.color}
+              refresh={refresh}
             />
           ))
         }

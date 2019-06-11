@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  View, StyleSheet, TouchableOpacity, Modal, Button, TouchableHighlight, Text,
+  View, StyleSheet, TouchableOpacity, Modal, Text,
 } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import AppIcon from './AppIcon';
 
 const styles = StyleSheet.create({
-  appIconContainer: {
+  toolboxIconContainer: {
     height: 60,
     width: 60,
     borderRadius: 30,
@@ -14,12 +15,6 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  iconButton: {
-    height: 50,
-    width: 50,
-    backgroundColor: 'black',
-    margin: 20,
   },
   modalBackLayer: {
     flex: 1,
@@ -32,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    height: '40%',
+    height: '60%',
     borderRadius: 25,
     borderWidth: 3,
     borderColor: 'white',
@@ -40,10 +35,26 @@ const styles = StyleSheet.create({
   },
   modalContents: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '80%',
-    height: '80%',
+    width: '60%',
+    height: '60%',
+  },
+  iconButton: {
+    height: 60,
+    width: 60,
+    backgroundColor: 'black',
+    borderRadius: 5,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconFont: {
+    color: 'white',
+  },
+  faIcon: {
+    color: 'white',
   },
 });
 
@@ -66,10 +77,12 @@ class ToolBox extends React.Component {
 
   render() {
     const { modalVisible } = this.state;
-    const { setDiceViewVisible, setGameConfig } = this.props;
+    const {
+      setDiceViewVisible, setGameConfig, playerNumber, commanderMode,
+    } = this.props;
     return (
       <TouchableOpacity
-        style={{ ...styles.appIconContainer }}
+        style={{ ...styles.toolboxIconContainer }}
         onPress={this.setModalVisible(true)}
       >
         <AppIcon size={32} color='#ff5722' />
@@ -92,19 +105,61 @@ class ToolBox extends React.Component {
                   style={styles.iconButton}
                   onPress={this.onPressDice(setDiceViewVisible)}
                 >
-                  <Text style={{ color: 'white' }}>Dice</Text>
+                  <FontAwesomeIcon
+                    icon='dice'
+                    style={styles.faIcon}
+                    size={32}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={setGameConfig(playerNumber, commanderMode)}
+                >
+                  <FontAwesomeIcon
+                    icon='redo'
+                    style={styles.faIcon}
+                    size={32}
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.iconButton}
                   onPress={setGameConfig(2, false)}
                 >
-                  <Text style={{ color: 'white' }}>Config</Text>
+                  <FontAwesomeIcon
+                    icon='user-friends'
+                    style={styles.faIcon}
+                  />
+                  <Text style={styles.iconFont}>2</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.iconButton}
-                  onPress={this.onPressReset}
+                  onPress={setGameConfig(4, false)}
                 >
-                  <Text style={{ color: 'white' }}>Reset</Text>
+                  <FontAwesomeIcon
+                    icon='users'
+                    style={styles.faIcon}
+                  />
+                  <Text style={styles.iconFont}>4</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={setGameConfig(2, true)}
+                >
+                  <FontAwesomeIcon
+                    icon='user-friends'
+                    style={styles.faIcon}
+                  />
+                  <Text style={styles.iconFont}>EDH 2</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={setGameConfig(4, true)}
+                >
+                  <FontAwesomeIcon
+                    icon='users'
+                    style={styles.faIcon}
+                  />
+                  <Text style={styles.iconFont}>EDH 4</Text>
                 </TouchableOpacity>
               </View>
             </View>
