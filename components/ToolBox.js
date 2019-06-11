@@ -5,13 +5,15 @@ import {
 import AppIcon from './AppIcon';
 
 const styles = StyleSheet.create({
-  icon: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+  appIconContainer: {
+    height: 60,
+    width: 60,
+    borderRadius: 30,
     borderColor: 'white',
-    backgroundColor: '#C4360B',
+    backgroundColor: '#ffe57f',
     borderWidth: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconButton: {
     height: 50,
@@ -67,10 +69,10 @@ class ToolBox extends React.Component {
     const { setDiceViewVisible, setGameConfig } = this.props;
     return (
       <TouchableOpacity
-        style={{ ...styles.icon }}
+        style={{ ...styles.appIconContainer }}
         onPress={this.setModalVisible(true)}
       >
-        <AppIcon />
+        <AppIcon size={32} color='#ff5722' />
         <Modal
           transparent
           animationType='fade'

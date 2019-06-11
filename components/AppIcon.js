@@ -1,11 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 export default class AppIcon extends React.Component {
   render() {
     return (
-      <FontAwesomeIcon icon={faCoffee} color='red' />
+      <FontAwesomeIcon
+        icon='fire'
+        color={this.props.color || '#ff5722'}
+        size={this.props.size || 16}
+      />
     );
   }
 }

@@ -2,9 +2,13 @@ import React from 'react';
 import {
   StatusBar, StyleSheet, View,
 } from 'react-native';
+import { faFire } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import LifeCounterView from './components/LifeCounterView';
 import DiceView from './components/DiceView';
 import { generatePlayers } from './components/Utils';
+
+library.add(faFire);
 
 export default class App extends React.Component {
   constructor(props) {
