@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 class CommanderDamageZone extends React.Component {
   render() {
-    const { opponents, refresh } = this.props;
+    const { opponents, refresh, isUpperRow } = this.props;
     return (
       <View style={styles.container}>
         {
@@ -25,6 +25,7 @@ class CommanderDamageZone extends React.Component {
               playerName={opponent.index + 1}
               color={opponent.color}
               refresh={refresh}
+              isUpperRow={isUpperRow}
             />
           ))
         }

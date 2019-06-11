@@ -73,24 +73,27 @@ class PlayerZone extends React.Component {
 
   render() {
     const { count, refresh } = this.state;
-    const { opponents } = this.props;
+    const {
+      playerName, commanderMode, opponents, isUpperRow,
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.infoArea}>
           <Text>
-            {`Player ${this.props.playerName}`}
+            {`Player ${playerName}`}
           </Text>
           <Text style={styles.countFont}>
             {count}
           </Text>
         </View>
         {
-          this.props.commanderMode
+          commanderMode
             ? (
               <View style={styles.commanderDamageArea}>
                 <CommanderDamageZone
                   opponents={opponents}
                   refresh={refresh}
+                  isUpperRow={isUpperRow}
                 />
               </View>
             )

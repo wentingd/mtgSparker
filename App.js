@@ -18,7 +18,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerNumber: 4,
+      playerNumber: 2,
       commanderMode: true,
       diceView: false,
     };

@@ -75,7 +75,7 @@ class MiniCounter extends React.Component {
 
   render() {
     const { count, modalVisible } = this.state;
-    const { color, playerName } = this.props;
+    const { color, playerName, isUpperRow } = this.props;
     return (
       <TouchableOpacity
         style={{ ...styles.counter, backgroundColor: color || 'white' }}
@@ -98,7 +98,11 @@ class MiniCounter extends React.Component {
             <View
               style={{ ...styles.modalBody, backgroundColor: color }}
             >
-              <View style={styles.modalContents}>
+              <View style={{
+                ...styles.modalContents,
+                transform: isUpperRow ? [{ rotate: '-180deg' }] : [],
+              }}
+              >
                 <Button
                   title='+'
                   color='black'

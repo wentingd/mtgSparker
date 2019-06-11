@@ -43,7 +43,9 @@ const styles = {
   },
 };
 
-const renderPlayerArea = (player, opponents, commanderMode) => (
+const renderPlayerArea = ({
+  player, opponents, commanderMode, isUpperRow,
+}) => (
   <View
     key={player.index}
     style={{ ...styles.playerArea, backgroundColor: player.color }}
@@ -52,6 +54,7 @@ const renderPlayerArea = (player, opponents, commanderMode) => (
       playerName={player.index + 1}
       opponents={opponents}
       commanderMode={commanderMode}
+      isUpperRow={isUpperRow}
     />
   </View>
 );
@@ -66,15 +69,25 @@ class CounterView extends React.Component {
       <View style={styles.container}>
         <View style={styles.upperRow}>
           {
-            players.slice(playersPerRow, this.props.playerNumber).map(
-              (player) => renderPlayerArea(player, omitByIndex(player, players), commanderMode),
+            players.slice(playersPerRow, playerNumber).map(
+              (player) => renderPlayerArea({
+                player,
+                opponents: omitByIndex(player, players),
+                commanderMode,
+                isUpperRow: true,
+              }),
             )
           }
         </View>
         <View style={styles.lowerRow}>
           {
             players.slice(0, playersPerRow).map(
-              (player) => renderPlayerArea(player, omitByIndex(player, players), commanderMode),
+              (player) => renderPlayerArea({
+                player,
+                opponents: omitByIndex(player, players),
+                commanderMode,
+                isUpperRow: false,
+              }),
             )
           }
         </View>
