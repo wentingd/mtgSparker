@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import CommanderDamageZone from './CommanderDamageZone';
 import { normalizeSize } from './Utils';
+import { Striped } from './SvgPatterns';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +13,9 @@ const styles = StyleSheet.create({
     margin: 5,
     alignItems: 'stretch',
     justifyContent: 'center',
+  },
+  pattern: {
+    zIndex: -200,
   },
   infoArea: {
     flex: 1,
@@ -91,6 +95,7 @@ class PlayerZone extends React.Component {
             {count}
           </Text>
         </View>
+        {/* <Striped /> */}
         {
           commanderMode
             ? (
