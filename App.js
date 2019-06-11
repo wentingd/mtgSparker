@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import {
   faFire, faDice, faCogs, faRedo, faUsers, faUserFriends,
+  faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import LifeCounterView from './components/LifeCounterView';
@@ -12,6 +13,7 @@ import { generatePlayers } from './components/Utils';
 
 library.add(
   faFire, faDice, faCogs, faRedo, faUsers, faUserFriends,
+  faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix,
 );
 
 export default class App extends React.Component {
