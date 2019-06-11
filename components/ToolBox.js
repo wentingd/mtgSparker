@@ -70,6 +70,7 @@ class ToolBox extends React.Component {
         style={{ ...styles.icon }}
         onPress={this.setModalVisible(true)}
       >
+        <AppIcon />
         <Modal
           transparent
           animationType='fade'
