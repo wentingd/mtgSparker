@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import PlayerLifeCounter from './PlayerLifeCounter';
+import PlayerZone from './PlayerZone';
 import ToolBox from './ToolBox';
 import { omitByIndex } from './Utils';
 
@@ -26,7 +26,7 @@ const styles = {
     alignItems: 'stretch',
     alignSelf: 'center',
     // TODO: using transform disturbs life counter display. see react-native/issues/19637
-    transform: [{ rotate: '-180deg' }],
+    // transform: [{ rotate: '-180deg' }],
   },
   playerArea: {
     flex: 1,
@@ -50,7 +50,7 @@ const renderPlayerArea = ({
     key={player.index}
     style={{ ...styles.playerArea, backgroundColor: player.color }}
   >
-    <PlayerLifeCounter
+    <PlayerZone
       playerName={player.index + 1}
       opponents={opponents}
       commanderMode={commanderMode}

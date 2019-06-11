@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     zIndex: 1,
+    // // for debugging
+    // opacity: 1,
+    // backgroundColor: 'pink',
+    // borderColor: 'black',
+    // borderWidth: 3,
   },
   commanderDamageArea: {
     width: '60%',
@@ -103,6 +108,8 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('+')}
+          // // fordebugg
+          // onPress={() => alert('+ pressed')}
         >
           <Text style={styles.touchableAreaFont}>+</Text>
         </TouchableOpacity>
@@ -110,6 +117,8 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('-')}
+          // // fordebugg
+          // onPress={() => alert('- pressed')}
         >
           <Text style={styles.touchableAreaFont}>-</Text>
         </TouchableOpacity>

@@ -36,7 +36,7 @@ const convertFaceCountToWord = (number) => {
 
 class Dice extends React.Component {
   render() {
-    const { faceCount, color } = this.props;
+    const { faceCount } = this.props;
     return (
       <View style={{
         ...styles.container,

@@ -7,7 +7,7 @@ import {
   faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import LifeCounterView from './components/LifeCounterView';
+import CounterView from './components/CounterView';
 import DiceView from './components/DiceView';
 import { generatePlayers } from './components/Utils';
 
@@ -40,7 +40,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.screen}>
         <StatusBar hidden />
-        <LifeCounterView
+        <CounterView
           players={players}
           playerNumber={playerNumber}
           commanderMode={commanderMode}
