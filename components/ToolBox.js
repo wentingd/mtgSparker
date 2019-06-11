@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  View, StyleSheet, TouchableOpacity, Modal, Button, TouchableHighlight,
+  View, StyleSheet, TouchableOpacity, Modal, Button, TouchableHighlight, Text,
 } from 'react-native';
-// import AppIcon from './AppIcon';
+import AppIcon from './AppIcon';
 
 const styles = StyleSheet.create({
   icon: {
@@ -13,10 +13,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#C4360B',
     borderWidth: 5,
   },
-  diceIcon: {
+  iconButton: {
     height: 50,
     width: 50,
     backgroundColor: 'black',
+    margin: 20,
   },
   modalBackLayer: {
     flex: 1,
@@ -36,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'beige',
   },
   modalContents: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'stretch',
+    alignItems: 'center',
     width: '80%',
     height: '80%',
   },
@@ -63,7 +64,7 @@ class ToolBox extends React.Component {
 
   render() {
     const { modalVisible } = this.state;
-    const { setDiceViewVisible } = this.props;
+    const { setDiceViewVisible, setGameConfig } = this.props;
     return (
       <TouchableOpacity
         style={{ ...styles.icon }}
@@ -85,9 +86,23 @@ class ToolBox extends React.Component {
             >
               <View style={styles.modalContents}>
                 <TouchableOpacity
-                  style={styles.diceIcon}
+                  style={styles.iconButton}
                   onPress={this.onPressDice(setDiceViewVisible)}
-                />
+                >
+                  <Text style={{ color: 'white' }}>Dice</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={setGameConfig(2, false)}
+                >
+                  <Text style={{ color: 'white' }}>Config</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.iconButton}
+                  onPress={this.onPressReset}
+                >
+                  <Text style={{ color: 'white' }}>Reset</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableOpacity>

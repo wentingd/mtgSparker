@@ -1,14 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-// import { Svg } from 'expo';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
-// const {
-//   Circle, Rect, G, Defs, Use,
-// } = Svg;
-
-export default class SvgExample extends React.Component {
+export default class AppIcon extends React.Component {
   render() {
     return (
       <View>
