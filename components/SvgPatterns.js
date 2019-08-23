@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  View, StyleSheet,
-} from 'react-native';
+  Defs, Path, Pattern, Rect,
+} from 'react-native-svg';
 import { Svg } from 'expo';
-
-const {
-  Rect, Defs, Pattern, Path,
-} = Svg;
 
 class Striped extends React.Component {
   render() {

@@ -113,7 +113,11 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('+')}
-          // // fordebugg
+          // TODO: remove this temprary fix when react-native 0.60.5 is added to expo
+          hitSlop={{
+            top: 0, bottom: 0, left: 0, right: 0,
+          }}
+          // fordebugg
           // onPress={() => alert('+ pressed')}
         >
           <Text style={styles.touchableAreaFont}>+</Text>
@@ -121,8 +125,12 @@ class PlayerZone extends React.Component {
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.touchableArea}
+          // TODO: remove this temprary fix when react-native 0.60.5 is added to expo
+          hitSlop={{
+            top: 0, bottom: 0, left: 0, right: 0,
+          }}
           onPress={this.handleOnPress('-')}
-          // // fordebugg
+          // fordebugg
           // onPress={() => alert('- pressed')}
         >
           <Text style={styles.touchableAreaFont}>-</Text>
