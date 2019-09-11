@@ -26,6 +26,6 @@ class Striped extends React.Component {
   }
 }
 
-export {
+export default {
   Striped,
 };

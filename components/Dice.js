@@ -15,11 +15,6 @@ const styles = StyleSheet.create({
   pip: {
     color: 'gainsboro',
   },
-  // faceText: {
-  //   textAlign: 'center',
-  //   color: 'white',
-  //   fontSize: 50,
-  // },
 });
 
 const convertFaceCountToWord = (number) => {
@@ -34,23 +29,20 @@ const convertFaceCountToWord = (number) => {
   return map[number];
 };
 
-class Dice extends React.Component {
-  render() {
-    const { faceCount } = this.props;
-    return (
-      <View style={{
-        ...styles.container,
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      }}
-      >
-        <FontAwesomeIcon
-          icon={`dice-${convertFaceCountToWord(faceCount)}`}
-          size={75}
-          style={styles.pip}
-        />
-      </View>
-    );
-  }
+function Dice({ faceCount }) {
+  return (
+    <View style={{
+      ...styles.container,
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    }}
+    >
+      <FontAwesomeIcon
+        icon={`dice-${convertFaceCountToWord(faceCount)}`}
+        size={75}
+        style={styles.pip}
+      />
+    </View>
+  );
 }
 
 export default Dice;

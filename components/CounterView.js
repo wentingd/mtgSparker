@@ -25,7 +25,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'center',
-    // TODO: using transform disturbs life counter display. see react-native/issues/19637
+    // TODO: remove this temporary fix when React-native merges #25836. see react-native/issues/19637
     transform: [{ rotate: '-180deg' }],
   },
   playerArea: {
@@ -59,50 +59,47 @@ const renderPlayerArea = ({
   </View>
 );
 
-class CounterView extends React.Component {
-  render() {
-    const {
-      commanderMode, playerNumber, players, setDiceViewVisible, setGameConfig,
-    } = this.props;
-    const playersPerRow = playerNumber / 2;
-    return (
-      <View style={styles.container}>
-        <View style={styles.upperRow}>
-          {
-            players.slice(playersPerRow, playerNumber).map(
-              (player) => renderPlayerArea({
-                player,
-                opponents: omitByIndex(player, players),
-                commanderMode,
-                isUpperRow: true,
-              }),
-            )
-          }
-        </View>
-        <View style={styles.lowerRow}>
-          {
-            players.slice(0, playersPerRow).map(
-              (player) => renderPlayerArea({
-                player,
-                opponents: omitByIndex(player, players),
-                commanderMode,
-                isUpperRow: false,
-              }),
-            )
-          }
-        </View>
-        <View style={styles.toolBoxArea}>
-          <ToolBox
-            setDiceViewVisible={setDiceViewVisible}
-            setGameConfig={setGameConfig}
-            players={players}
-            playerNumber={playerNumber}
-            commanderMode={commanderMode}
-          />
-        </View>
+function CounterView({
+  commanderMode, playerNumber, players, setDiceViewVisible, setGameConfig,
+}) {
+  const playersPerRow = playerNumber / 2;
+  return (
+    <View style={styles.container}>
+      <View style={styles.upperRow}>
+        {
+          players.slice(playersPerRow, playerNumber).map(
+            (player) => renderPlayerArea({
+              player,
+              opponents: omitByIndex(player, players),
+              commanderMode,
+              isUpperRow: true,
+            }),
+          )
+        }
       </View>
-    );
-  }
+      <View style={styles.lowerRow}>
+        {
+          players.slice(0, playersPerRow).map(
+            (player) => renderPlayerArea({
+              player,
+              opponents: omitByIndex(player, players),
+              commanderMode,
+              isUpperRow: false,
+            }),
+          )
+        }
+      </View>
+      <View style={styles.toolBoxArea}>
+        <ToolBox
+          setDiceViewVisible={setDiceViewVisible}
+          setGameConfig={setGameConfig}
+          players={players}
+          playerNumber={playerNumber}
+          commanderMode={commanderMode}
+        />
+      </View>
+    </View>
+  );
 }
 
 export default CounterView;

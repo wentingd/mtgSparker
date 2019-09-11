@@ -13,25 +13,22 @@ const styles = StyleSheet.create({
   },
 });
 
-class CommanderDamageZone extends React.Component {
-  render() {
-    const { opponents, refresh, isUpperRow } = this.props;
-    return (
-      <View style={styles.container}>
-        {
-          opponents.map((opponent) => (
-            <MiniCounter
-              key={opponent.index}
-              playerName={opponent.index + 1}
-              color={opponent.color}
-              refresh={refresh}
-              isUpperRow={isUpperRow}
-            />
-          ))
-        }
-      </View>
-    );
-  }
+function CommanderDamageZone({ opponents, refresh, isUpperRow }) {
+  return (
+    <View style={styles.container}>
+      {
+        opponents.map((opponent) => (
+          <MiniCounter
+            key={opponent.index}
+            playerName={opponent.index + 1}
+            color={opponent.color}
+            refresh={refresh}
+            isUpperRow={isUpperRow}
+          />
+        ))
+      }
+    </View>
+  );
 }
 
 export default CommanderDamageZone;
