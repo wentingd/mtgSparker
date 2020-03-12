@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CommanderDamageZone({ opponents, refresh, isUpperRow }) {
+function CommanderDamageZone({ opponents, isUpperRow }) {
   return (
     <View style={styles.container}>
       {
@@ -22,7 +22,6 @@ function CommanderDamageZone({ opponents, refresh, isUpperRow }) {
             key={opponent.index}
             playerName={opponent.index + 1}
             color={opponent.color}
-            refresh={refresh}
             isUpperRow={isUpperRow}
           />
         ))

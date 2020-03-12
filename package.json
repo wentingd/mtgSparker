@@ -11,14 +11,15 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-native-fontawesome": "^0.1.0",
-    "expo": "^33.0.7",
-    "react": "16.8.3",
-    "react-native": "^0.59.10",
-    "react-native-svg": "^9.4.0"
+    "expo": "^36.0.0",
+    "react": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
+    "react-native-svg": "9.13.3",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
-    "babel-preset-expo": "^5.2.0",
+    "babel-preset-expo": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",

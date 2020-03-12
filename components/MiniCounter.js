@@ -54,14 +54,6 @@ class MiniCounter extends React.Component {
     modalVisible: false,
   };
 
-  componentWillReceiveProps({ refresh, startingCount }) {
-    if (refresh) {
-      this.setState({
-        count: startingCount || 0,
-      });
-    }
-  }
-
   setModalVisible = (visible) => () => {
     this.setState({ modalVisible: visible });
   };

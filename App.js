@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StatusBar, StyleSheet, View,
 } from 'react-native';
+import shortid from 'shortid';
 import {
   faFire, faDice, faCogs, faRedo, faUsers, faUserFriends,
   faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix,
@@ -38,7 +39,7 @@ export default class App extends React.Component {
     const { playerNumber, commanderMode } = this.state;
     const players = generatePlayers(playerNumber);
     return (
-      <View style={styles.screen}>
+      <View style={styles.screen} key={commanderMode + playerNumber + shortid.generate()}>
         <StatusBar hidden />
         <CounterView
           players={players}

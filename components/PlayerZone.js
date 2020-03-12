@@ -57,31 +57,19 @@ const styles = StyleSheet.create({
 });
 
 class PlayerZone extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: this.props.commanderMode ? 40 : (this.props.startingLife || 20),
-      refresh: false,
-    };
-  }
-
-  componentWillReceiveProps({ commanderMode, startingLife }) {
-    this.setState({
-      count: commanderMode ? 40 : (startingLife || 20),
-      refresh: true,
-    });
-  }
+  state = {
+    count: this.props.commanderMode ? 40 : (this.props.startingLife || 20),
+  };
 
   handleOnPress = (operation) => () => {
     const { count } = this.state;
     this.setState({
       count: operation === '+' ? count + 1 : count - 1,
-      refresh: false,
     });
   };
 
   render() {
-    const { count, refresh } = this.state;
+    const { count } = this.state;
     const {
       playerName, commanderMode, opponents, isUpperRow,
     } = this.props;
@@ -102,7 +90,6 @@ class PlayerZone extends React.Component {
               <View style={styles.commanderDamageArea}>
                 <CommanderDamageZone
                   opponents={opponents}
-                  refresh={refresh}
                   isUpperRow={isUpperRow}
                 />
               </View>
@@ -113,10 +100,6 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('+')}
-          // TODO: remove this temprary fix when react-native 0.60.5 is added to expo
-          hitSlop={{
-            top: 0, bottom: 0, left: 0, right: 0,
-          }}
           // fordebugg
           // onPress={() => alert('+ pressed')}
         >
@@ -125,10 +108,6 @@ class PlayerZone extends React.Component {
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.touchableArea}
-          // TODO: remove this temprary fix when react-native 0.60.5 is added to expo
-          hitSlop={{
-            top: 0, bottom: 0, left: 0, right: 0,
-          }}
           onPress={this.handleOnPress('-')}
           // fordebugg
           // onPress={() => alert('- pressed')}
