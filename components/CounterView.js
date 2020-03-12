@@ -25,7 +25,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'stretch',
     alignSelf: 'center',
-    // TODO: remove this temporary fix when React-native merges #25836. see react-native/issues/19637
     transform: [{ rotate: '-180deg' }],
   },
   playerArea: {

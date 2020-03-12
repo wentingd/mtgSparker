@@ -44,8 +44,6 @@ class DiceView extends React.Component {
       index: player.index,
       initialPosition: isEven(i) ? { x: -400, y: -400 } : { x: 400, y: 400 },
       toPosition: { x: 0, y: 0 },
-      // TODO: reverse column/row order makes the dice color no longer a match
-      // color: player.color,
     }));
     this.state = {
       spinValue: new Animated.Value(this.initialSpin),
