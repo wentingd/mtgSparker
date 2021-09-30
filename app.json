@@ -21,7 +21,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "sdkVersion": "36.0.0",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.dweller.mtgsparker",
