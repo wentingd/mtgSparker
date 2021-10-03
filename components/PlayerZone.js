@@ -34,14 +34,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     zIndex: 1,
-    // // for debugging
+    // for debugging
     // opacity: 1,
     // backgroundColor: 'pink',
     // borderColor: 'black',
     // borderWidth: 3,
   },
-  commanderDamageArea: {
-    width: '60%',
+  commanderDamageZone: {
+    width: '100%',
+    height: '20%',
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -87,7 +88,7 @@ class PlayerZone extends React.Component {
         {
           commanderMode
             ? (
-              <View style={styles.commanderDamageArea}>
+              <View style={styles.commanderDamageZone}>
                 <CommanderDamageZone
                   opponents={opponents}
                   isUpperRow={isUpperRow}
@@ -100,8 +101,6 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('+')}
-          // fordebugg
-          // onPress={() => alert('+ pressed')}
         >
           <Text style={styles.touchableAreaFont}>+</Text>
         </TouchableOpacity>
@@ -109,8 +108,6 @@ class PlayerZone extends React.Component {
           activeOpacity={0.5}
           style={styles.touchableArea}
           onPress={this.handleOnPress('-')}
-          // fordebugg
-          // onPress={() => alert('- pressed')}
         >
           <Text style={styles.touchableAreaFont}>-</Text>
         </TouchableOpacity>

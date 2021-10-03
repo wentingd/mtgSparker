@@ -5,22 +5,27 @@ import {
 
 const styles = {
   counter: {
-    width: '30%',
-    borderRadius: 30,
     justifyContents: 'center',
+    marginVertical: 0,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    width: '30%',
+    borderRadius: 40,
+    
     alignItem: 'center',
     alignSelf: 'center',
   },
   counterFaceFont: {
     alignSelf: 'center',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 25,
     fontFamily: 'sans-serif-light',
   },
   modalCountFont: {
     alignSelf: 'center',
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 60,
+    fontWeight: '400',
     fontFamily: 'sans-serif-light',
   },
   modalBackLayer: {
@@ -43,9 +48,23 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'stretch',
-    width: '80%',
-    height: '80%',
+    width: '90%',
+    height: '90%',
   },
+  customButtonText: {
+    fontSize: 40,
+    fontWeight: '400',
+    color: 'white',
+    fontFamily: 'sans-serif-light',
+  },
+  customButtonBG: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+    paddingHorizontal: 30,
+    paddingVertical: 5,
+    borderRadius: 30
+    }
 };
 
 class MiniCounter extends React.Component {
@@ -95,18 +114,22 @@ class MiniCounter extends React.Component {
                 transform: isUpperRow ? [{ rotate: '-180deg' }] : [],
               }}
               >
-                <Button
-                  title='+'
-                  color='black'
-                  onPress={this.handleCountOnPress('+')}
-                />
-                <Text>{`Damage by Player ${playerName}`}</Text>
-                <Text style={styles.modalCountFont}>{count}</Text>
-                <Button
-                  title='-'
-                  color='black'
-                  onPress={this.handleCountOnPress('-')}
-                />
+              <TouchableOpacity
+                style={styles.customButtonBG}
+                onPress={this.handleCountOnPress('+')}
+                accessibilityLabel='+'
+              >
+                <Text style={styles.customButtonText}>+</Text>
+              </TouchableOpacity>
+              <Text>{`Damage by Player ${playerName}`}</Text>
+              <Text style={styles.modalCountFont}>{count}</Text>              
+              <TouchableOpacity
+                style={styles.customButtonBG}
+                onPress={this.handleCountOnPress('-')}
+                accessibilityLabel='-'
+              >
+                <Text style={styles.customButtonText}>-</Text>
+              </TouchableOpacity>
               </View>
             </View>
           </TouchableOpacity>
