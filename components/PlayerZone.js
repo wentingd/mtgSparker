@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import CommanderDamageZone from './CommanderDamageZone';
 import { normalizeSize } from './Utils';
-// import { Striped } from './SvgPatterns';
 
 const styles = StyleSheet.create({
   container: {
